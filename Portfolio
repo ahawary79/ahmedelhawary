@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed El Hawary — Digital Marketing & E-Communication Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B1220;
+    --panel:#121B2E;
+    --panel2:#0F1728;
+    --line:#223049;
+    --text:#E8ECF3;
+    --muted:#8A97AC;
+    --amber:#FFB020;
+    --teal:#00C2A8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+    letter-spacing:-0.02em;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+  img,video{max-width:100%;display:block;}
+
+  /* NAV */
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(11,18,32,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-logo{font-family:'Space Grotesk';font-weight:700;font-size:1.1rem;}
+  .nav-logo span{color:var(--amber);}
+  .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;}
+  .nav-links a{
+    font-size:0.88rem;color:var(--muted);text-decoration:none;
+    font-weight:500;transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--amber);}
+  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;}
+
+  @media(max-width:760px){
+    .nav-links{
+      position:fixed;top:60px;left:0;right:0;
+      background:var(--panel);flex-direction:column;
+      padding:20px 24px;gap:16px;border-bottom:1px solid var(--line);
+      transform:translateY(-150%);transition:transform .3s;
+    }
+    .nav-links.open{transform:translateY(0);}
+    .nav-toggle{display:block;}
+  }
+
+  section{padding:100px 24px;max-width:1200px;margin:0 auto;}
+  .eyebrow{
+    font-family:'IBM Plex Mono';font-size:0.78rem;letter-spacing:0.12em;
+    text-transform:uppercase;color:var(--teal);margin-bottom:14px;display:block;
+  }
+
+  /* HERO */
+  .hero{
+    min-height:92vh;display:flex;flex-direction:column;justify-content:center;
+    padding-top:60px;position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;
+    background:radial-gradient(circle,rgba(255,176,32,0.12),transparent 70%);
+    pointer-events:none;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:center;}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .hero h1{font-size:clamp(2.4rem,5vw,4.2rem);line-height:1.05;font-weight:700;}
+  .hero h1 .accent{color:var(--amber);}
+  .hero-role{font-size:1.15rem;color:var(--muted);margin-top:18px;max-width:560px;}
+  .hero-photo{
+    width:100%;aspect-ratio:1/1.05;border-radius:18px;overflow:hidden;
+    border:1px solid var(--line);background:var(--panel);
+  }
+  .hero-photo img{width:100%;height:100%;object-fit:cover;}
+  .hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    padding:13px 26px;border-radius:8px;font-weight:600;font-size:0.92rem;
+    text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+    transition:transform .2s, background .2s;border:1px solid transparent;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--amber);color:#1a1200;}
+  .btn-ghost{border-color:var(--line);color:var(--text);}
+
+  /* TICKER - signature element */
+  .ticker-wrap{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:var(--panel2);overflow:hidden;white-space:nowrap;padding:16px 0;
+  }
+  .ticker{display:inline-block;padding-left:100%;animation:scroll 42s linear infinite;}
+  .ticker span{
+    font-family:'IBM Plex Mono';font-size:0.85rem;margin-right:48px;color:var(--muted);
+  }
+  .ticker span b{color:var(--amber);font-weight:600;}
+  .ticker span i{color:var(--teal);font-style:normal;}
+  @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
+  @media(prefers-reduced-motion:reduce){.ticker{animation:none;padding-left:0;}}
+
+  /* SECTION HEADERS */
+  .sec-head{margin-bottom:48px;}
+  .sec-head h2{font-size:clamp(1.8rem,3.5vw,2.6rem);}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:2fr 1fr;gap:50px;}
+  @media(max-width:900px){.about-grid{grid-template-columns:1fr;}}
+  .about-text p{color:var(--muted);font-size:1.02rem;margin-bottom:16px;}
+  .stat-box{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:20px;margin-bottom:14px;
+  }
+  .stat-box .num{font-family:'Space Grotesk';font-size:1.8rem;font-weight:700;color:var(--amber);}
+  .stat-box .label{font-size:0.82rem;color:var(--muted);margin-top:4px;}
+
+  /* EXPERIENCE TIMELINE */
+  .timeline{border-left:2px solid var(--line);padding-left:34px;position:relative;}
+  .tl-item{margin-bottom:52px;position:relative;}
+  .tl-item::before{
+    content:'';position:absolute;left:-41px;top:4px;width:12px;height:12px;
+    border-radius:50%;background:var(--teal);border:3px solid var(--ink);
+  }
+  .tl-item .role{font-size:1.25rem;font-weight:600;}
+  .tl-item .company{color:var(--teal);font-size:0.95rem;margin-top:2px;}
+  .tl-item .dates{font-family:'IBM Plex Mono';font-size:0.8rem;color:var(--muted);margin-top:4px;}
+  .tl-item ul{margin:16px 0 0;padding-left:20px;color:var(--muted);}
+  .tl-item li{margin-bottom:8px;}
+
+  /* PROJECT CARDS */
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:32px;margin-bottom:28px;
+  }
+  .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:18px;}
+  .card-head h3{font-size:1.4rem;}
+  .card-tag{
+    font-family:'IBM Plex Mono';font-size:0.72rem;padding:5px 11px;border-radius:20px;
+    border:1px solid var(--teal);color:var(--teal);white-space:nowrap;height:fit-content;
+  }
+  .metric-row{display:flex;flex-wrap:wrap;gap:14px;margin:20px 0;}
+  .metric{
+    background:var(--panel2);border:1px solid var(--line);border-radius:10px;
+    padding:14px 18px;min-width:120px;
+  }
+  .metric .n{font-family:'Space Grotesk';font-weight:700;font-size:1.35rem;color:var(--amber);}
+  .metric .l{font-size:0.75rem;color:var(--muted);margin-top:2px;}
+  .card p{color:var(--muted);}
+  .media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:20px;}
+  .media-grid img,.media-grid video{border-radius:10px;width:100%;height:220px;object-fit:cover;border:1px solid var(--line);}
+  .embed-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px;}
+  .embed-row iframe,.embed-row blockquote{width:100%;border:none;border-radius:10px;min-height:400px;}
+
+  /* GRID for freelance projects */
+  .proj-grid{display:grid;grid-template-columns:1fr;gap:24px;}
+
+  /* SPEAKING */
+  .speak-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  @media(max-width:700px){.speak-grid{grid-template-columns:1fr;}}
+  .speak-grid img{border-radius:14px;border:1px solid var(--line);height:320px;object-fit:cover;}
+
+  /* CONTACT */
+  .contact-box{
+    background:var(--panel);border:1px solid var(--line);border-radius:20px;
+    padding:56px;text-align:center;
+  }
+  .contact-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:28px;}
+  .contact-links a{
+    display:flex;align-items:center;gap:8px;padding:12px 22px;border-radius:8px;
+    border:1px solid var(--line);text-decoration:none;font-size:0.92rem;font-weight:500;
+    transition:border-color .2s, color .2s;
+  }
+  .contact-links a:hover{border-color:var(--amber);color:var(--amber);}
+
+  footer{
+    text-align:center;padding:40px 24px;color:var(--muted);font-size:0.85rem;
+    border-top:1px solid var(--line);
+  }
+
+  ::selection{background:var(--amber);color:#1a1200;}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Ahmed <span>El Hawary</span></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#signature">Signature Project</a></li>
+      <li><a href="#freelance">Freelance Work</a></li>
+      <li><a href="#speaking">Speaking</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <section style="padding-top:0;padding-bottom:0;">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Digital Marketing & E-Communication Manager</span>
+        <h1>Twelve years turning<br>attention into <span class="accent">measurable growth.</span></h1>
+        <p class="hero-role">I build and run digital strategy, paid media, and content systems for brands and independent clients across Egypt and the wider MENA region — from a national Pay-TV network to solo entrepreneurs launching from zero.</p>
+        <div class="hero-cta">
+          <a href="#experience" class="btn btn-primary">View my work →</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="assets/headshot.jpg" alt="Ahmed El Hawary">
+      </div>
+    </div>
+  </section>
+</header>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span><b>12+ years</b> <i>in digital & e-communication</i></span>
+    <span><b>16,631</b> <i>leads generated — MISIR TURLARI campaigns</i></span>
+    <span><b>960K</b> <i>views — CNE World Cup raffle film</i></span>
+    <span><b>11.2M+</b> <i>reach — CNE Meta ad account</i></span>
+    <span><b>2.06M</b> <i>reach — Ebada Ibrahim personal brand</i></span>
+    <span><b>3,608</b> <i>page likes — WE Supply, built from zero</i></span>
+    <span><b>300%+</b> <i>brand engagement growth — flagship campaign</i></span>
+    <span><b>4</b> <i>speaking appearances — beIN Partners Forum</i></span>
+    <span><b>12+ years</b> <i>in digital & e-communication</i></span>
+    <span><b>16,631</b> <i>leads generated — MISIR TURLARI campaigns</i></span>
+    <span><b>960K</b> <i>views — CNE World Cup raffle film</i></span>
+    <span><b>11.2M+</b> <i>reach — CNE Meta ad account</i></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <span class="eyebrow">About</span>
+      <h2 style="margin-bottom:20px;">A marketer who stays close to the work.</h2>
+      <p>I'm Ahmed El Hawary, based in Cairo, Egypt. Since 2016 I've led digital strategy, paid media, content, and CRM for Cable Network Egypt (CNE), one of Egypt's leading Pay-TV providers — while running an independent client roster on the side covering tourism, personal branding, interior design, tech retail, and personal coaching.</p>
+      <p>What ties the work together is a habit of owning things end-to-end: I don't just run the ads, I've built Meta Business accounts and pages from zero, directed and edited video content, written the strategy decks, and stood on stage to represent partner brands at industry forums.</p>
+      <p>I'm currently exploring new senior digital marketing opportunities where strategy, hands-on execution, and measurable results all matter equally.</p>
+    </div>
+    <div>
+      <div class="stat-box"><div class="num">12+</div><div class="label">Years in digital marketing & e-communication</div></div>
+      <div class="stat-box"><div class="num">5</div><div class="label">Active independent client engagements</div></div>
+      <div class="stat-box"><div class="num">EN / AR</div><div class="label">Advanced English, Native Arabic</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-head">
+    <span class="eyebrow">Employment History</span>
+    <h2>Cable Network Egypt (CNE)</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="role">E-Communication & Marketing Manager</div>
+      <div class="company">Cable Network Egypt — Giza, Egypt</div>
+      <div class="dates">2021 — Present</div>
+      <ul>
+        <li>Developed and executed integrated digital communication strategies aligned with brand and business goals</li>
+        <li>Drive multichannel campaigns across Meta, Google, and TikTok — enhancing awareness and conversions</li>
+        <li>Oversee paid media strategy and budget allocation to maximize ROI and lead acquisition</li>
+        <li>Analyze performance using GA4, Meta Insights, and CRM reports to refine strategy</li>
+      </ul>
+      <div class="metric-row">
+        <div class="metric"><div class="n">11.2M+</div><div class="l">Meta account reach</div></div>
+        <div class="metric"><div class="n">1M+</div><div class="l">Link clicks generated</div></div>
+        <div class="metric"><div class="n">518K</div><div class="l">GA4 active users</div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="role">Senior Digital Marketing Specialist</div>
+      <div class="company">Cable Network Egypt — Giza, Egypt</div>
+      <div class="dates">2018 — 2021</div>
+      <ul>
+        <li>Led SEO, PPC, and paid advertisement campaigns — increased site traffic by 50%</li>
+        <li>Built content marketing strategies and managed influencer collaborations to expand brand reach</li>
+        <li>Implemented and scaled email marketing campaigns based on engagement analytics</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="role">Digital & Social Media Specialist</div>
+      <div class="company">Cable Network Egypt — Giza, Egypt</div>
+      <div class="dates">2016 — 2018</div>
+      <ul>
+        <li>Built and executed social media strategy: platform selection, benchmarking, and audience identification</li>
+        <li>Owned editorial calendars and daily content across all CNE platforms</li>
+        <li>Collaborated cross-functionally with customer relations and direct sales on reputation management</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE PROJECT -->
+<section id="signature">
+  <div class="sec-head">
+    <span class="eyebrow">Signature Project</span>
+    <h2>CNE World Cup Raffle — "35 Years of Leadership"</h2>
+  </div>
+  <div class="card">
+    <p>To celebrate CNE's three decades as a Pay-TV pioneer, I conceived, directed, shot, and edited a raffle campaign rewarding the brand's most engaged followers with beIN World Cup subscriptions and 4K STB boxes. Entry required four actions — Follow, Like, Comment with #كأس_العالم_CNE, and Share — designed to maximize reach and organic participation simultaneously. The campaign was officially licensed under Egypt's Ministry of Social Solidarity and registered with the Consumer Protection Agency.</p>
+    <div class="metric-row">
+      <div class="metric"><div class="n">959,691</div><div class="l">Video views</div></div>
+      <div class="metric"><div class="n">682,444</div><div class="l">Reach</div></div>
+      <div class="metric"><div class="n">49,189</div><div class="l">Comments (hashtag entries)</div></div>
+      <div class="metric"><div class="n">10,675</div><div class="l">Total clicks</div></div>
+      <div class="metric"><div class="n">18</div><div class="l">Winners handed prizes on-camera</div></div>
+    </div>
+    <p style="margin-top:20px;">I personally handed prizes to all 18 winners at a branded step-and-repeat activation, photographing each handover and conducting short interviews — turning a digital contest into a real-world brand moment with lasting content value.</p>
+    <div class="media-grid">
+      <img src="assets/raffle1.jpg" alt="CNE raffle winner handover">
+      <img src="assets/raffle2.jpg" alt="CNE raffle winner handover">
+      <img src="assets/raffle3.jpg" alt="CNE raffle winner handover">
+      <img src="assets/raffle4.jpg" alt="CNE raffle winner handover">
+      <img src="assets/raffle5.jpg" alt="CNE raffle winner handover">
+      <img src="assets/raffle6.jpg" alt="CNE raffle winner handover">
+    </div>
+  </div>
+</section>
+
+<!-- FREELANCE -->
+<section id="freelance">
+  <div class="sec-head">
+    <span class="eyebrow">Independent Client Work</span>
+    <h2>Freelance Case Studies</h2>
+  </div>
+  <div class="proj-grid">
+
+    <div class="card">
+      <div class="card-head">
+        <div><h3>MISIR TURLARI</h3><div class="company" style="color:var(--teal);">Turkish Tourism — Paid Media Management</div></div>
+        <span class="card-tag">Meta Ads</span>
+      </div>
+      <p>Ongoing paid media management across two ad accounts, targeting Turkish tourists interested in visiting Egypt. Continuous, multi-year campaign management spanning seasonal promotions, SMS campaigns, and destination-specific targeting.</p>
+      <div class="metric-row">
+        <div class="metric"><div class="n">16,631</div><div class="l">Messaging conversations (leads)</div></div>
+        <div class="metric"><div class="n">6,385</div><div class="l">Instagram follows from ads</div></div>
+        <div class="metric"><div class="n">34,155</div><div class="l">Link clicks</div></div>
+        <div class="metric"><div class="n">6.7M+</div><div class="l">Reach</div></div>
+      </div>
+      <div class="embed-row">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUApSCqjXp4/" data-instgrm-version="14"></blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DNvO9Vp0I85/" data-instgrm-version="14"></blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DYwfxFYOQI5/" data-instgrm-version="14"></blockquote>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div><h3>Ebada Ibrahim</h3><div class="company" style="color:var(--teal);">TV Anchor — Personal Brand Growth</div></div>
+        <span class="card-tag">Instagram Ads</span>
+      </div>
+      <p>Managed paid Instagram growth for a TV anchor's personal brand over a Ramadan campaign period — mixing boosted posts and video ads on a lean budget.</p>
+      <div class="metric-row">
+        <div class="metric"><div class="n">2.06M</div><div class="l">Reach</div></div>
+        <div class="metric"><div class="n">364,529</div><div class="l">Post engagements</div></div>
+        <div class="metric"><div class="n">7,409</div><div class="l">Profile visits</div></div>
+        <div class="metric"><div class="n">1,773 AED</div><div class="l">Total spend</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div><h3>Solista Studios</h3><div class="company" style="color:var(--teal);">Interior Design — Full-Funnel Campaign</div></div>
+        <span class="card-tag">Strategy + Ads + Reporting</span>
+      </div>
+      <p>Ran content publishing and paid ads for a Class-A interior design studio, moving prospects through Awareness → Profile Visits → WhatsApp inquiries. Authored the full campaign report and data analysis myself.</p>
+      <div class="metric-row">
+        <div class="metric"><div class="n">137,408</div><div class="l">Reach</div></div>
+        <div class="metric"><div class="n">225,053</div><div class="l">Views</div></div>
+        <div class="metric"><div class="n">27</div><div class="l">Qualified WhatsApp inquiries</div></div>
+        <div class="metric"><div class="n">65% M / 35% F</div><div class="l">Audience, peak 25–34</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div><h3>WE Supply</h3><div class="company" style="color:var(--teal);">Computer & Tech Retailer — Built From Zero</div></div>
+        <span class="card-tag">0 → 1 Brand Build</span>
+      </div>
+      <p>Built the Meta Business Portfolio, Page, and Ad Account from scratch, then designed and ran the entire content system — hiring posts, product launches, and a 10-part "Daily Tips" educational series — plus paid campaigns.</p>
+      <div class="metric-row">
+        <div class="metric"><div class="n">3,608</div><div class="l">Page likes generated</div></div>
+        <div class="metric"><div class="n">255,869</div><div class="l">Impressions</div></div>
+        <div class="metric"><div class="n">83</div><div class="l">Messaging conversations @ 32.78 EGP</div></div>
+      </div>
+      <div class="media-grid">
+        <img src="assets/wesupply_hiring.jpg" alt="WE Supply hiring post">
+        <img src="assets/wesupply_product.jpg" alt="WE Supply product ad">
+        <img src="assets/wesupply_tip1.jpg" alt="WE Supply daily tip">
+        <img src="assets/wesupply_tip2.jpg" alt="WE Supply daily tip">
+        <video controls src="assets/wesupply_video1.mp4"></video>
+        <video controls src="assets/wesupply_ordernow.mp4"></video>
+        <video controls src="assets/wesupply_site.mp4"></video>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div><h3>Life Coach — Personal Branding</h3><div class="company" style="color:var(--teal);">Video Editing & Content Repurposing</div></div>
+        <span class="card-tag">Active — Since April 2026</span>
+      </div>
+      <p>Repurposing TV-aired footage into optimized short-form content for Meta and TikTok. Expanding into full content strategy and paid ads management. 13 videos published to date.</p>
+      <div class="embed-row">
+        <div class="fb-video" data-href="https://www.facebook.com/share/v/1JkPGjYa2L/" data-width="280"></div>
+        <div class="fb-video" data-href="https://www.facebook.com/share/r/1Eg3DUU6GL/" data-width="280"></div>
+        <div class="fb-video" data-href="https://www.facebook.com/share/r/1F3NYXtuNB/" data-width="280"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SPEAKING -->
+<section id="speaking">
+  <div class="sec-head">
+    <span class="eyebrow">Industry Presence</span>
+    <h2>Speaking — beIN Partners Forum</h2>
+  </div>
+  <p style="color:var(--muted);max-width:640px;margin-bottom:32px;">Representing CNE as a speaker at beIN's regional partner events — sharing digital strategy and partnership results with the wider beIN network.</p>
+  <div class="speak-grid">
+    <img src="assets/speaking1.jpg" alt="Speaking at beIN Partners Forum 2025">
+    <img src="assets/speaking2.jpg" alt="Speaking at beIN event">
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-box">
+    <span class="eyebrow">Get In Touch</span>
+    <h2>Let's talk about your next campaign.</h2>
+    <p style="color:var(--muted);max-width:480px;margin:14px auto 0;">Open to senior digital marketing and e-communication roles across Egypt and the MENA region.</p>
+    <div class="contact-links">
+      <a href="mailto:Hawary.ahmed@yahoo.com">✉ Hawary.ahmed@yahoo.com</a>
+      <a href="tel:+201002556615">📞 +2 010 025 56615</a>
+      <a href="https://linkedin.com/in/ahmed-aelhawary" target="_blank">in LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Ahmed El Hawary — Cairo, Egypt · Built with care.
+</footer>
+
+<script async src="//www.instagram.com/embed.js"></script>
+<script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
+<div id="fb-root"></div>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.addEventListener('click', ()=>document.getElementById('navLinks').classList.remove('open'));
+  });
+</script>
+</body>
+</html>
