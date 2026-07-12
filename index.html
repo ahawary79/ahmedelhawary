@@ -167,14 +167,15 @@
   .media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:20px;}
   .media-grid img,.media-grid video{border-radius:10px;width:100%;height:220px;object-fit:cover;border:1px solid var(--line);}
   
-  /* VIDEO EMBED GRID - improved scaling */
-  .embed-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:20px;}
+  /* VIDEO EMBED GRID - narrower width, taller height */
+  .embed-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:20px;justify-items:center;}
   .embed-row blockquote{width:100%;border:none;border-radius:10px;min-height:450px;}
   
   .youtube-embed{
     position:relative;
-    width:100%;
-    padding-bottom:56.25%;
+    width:70%;
+    max-width:400px;
+    padding-bottom:141.42%;
     height:0;
     overflow:hidden;
     border-radius:10px;
@@ -190,7 +191,12 @@
   }
   
   @media(max-width:900px){
-    .embed-row{grid-template-columns:1fr;}
+    .embed-row{grid-template-columns:1fr;justify-items:center;}
+    .youtube-embed{width:80%;max-width:350px;}
+  }
+  
+  @media(max-width:600px){
+    .youtube-embed{width:90%;max-width:100%;}
   }
 
   /* GRID for freelance projects */
