@@ -48,15 +48,15 @@
   }
   .nav-logo{font-family:'Space Grotesk';font-weight:700;font-size:1.1rem;}
   .nav-logo span{color:var(--amber);}
-  .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;}
+  .nav-links{display:flex;gap:24px;list-style:none;margin:0;padding:0;}
   .nav-links a{
-    font-size:0.88rem;color:var(--muted);text-decoration:none;
+    font-size:0.86rem;color:var(--muted);text-decoration:none;
     font-weight:500;transition:color .2s;
   }
   .nav-links a:hover{color:var(--amber);}
   .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;}
 
-  @media(max-width:760px){
+  @media(max-width:900px){
     .nav-links{
       position:fixed;top:60px;left:0;right:0;
       background:var(--panel);flex-direction:column;
@@ -103,7 +103,7 @@
   .btn-primary{background:var(--amber);color:#1a1200;}
   .btn-ghost{border-color:var(--line);color:var(--text);}
 
-  /* TICKER - signature element */
+  /* TICKER */
   .ticker-wrap{
     border-top:1px solid var(--line);border-bottom:1px solid var(--line);
     background:var(--panel2);overflow:hidden;white-space:nowrap;padding:16px 0;
@@ -117,7 +117,6 @@
   @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
   @media(prefers-reduced-motion:reduce){.ticker{animation:none;padding-left:0;}}
 
-  /* SECTION HEADERS */
   .sec-head{margin-bottom:48px;}
   .sec-head h2{font-size:clamp(1.8rem,3.5vw,2.6rem);}
 
@@ -131,6 +130,11 @@
   }
   .stat-box .num{font-family:'Space Grotesk';font-size:1.8rem;font-weight:700;color:var(--amber);}
   .stat-box .label{font-size:0.82rem;color:var(--muted);margin-top:4px;}
+  .strength-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+  .strength-tags span{
+    font-family:'IBM Plex Mono';font-size:0.76rem;padding:7px 13px;border-radius:20px;
+    border:1px solid var(--line);color:var(--muted);
+  }
 
   /* EXPERIENCE TIMELINE */
   .timeline{border-left:2px solid var(--line);padding-left:34px;position:relative;}
@@ -144,6 +148,24 @@
   .tl-item .dates{font-family:'IBM Plex Mono';font-size:0.8rem;color:var(--muted);margin-top:4px;}
   .tl-item ul{margin:16px 0 0;padding-left:20px;color:var(--muted);}
   .tl-item li{margin-bottom:8px;}
+
+  /* EDUCATION / CERTIFICATIONS */
+  .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .edu-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:24px;display:flex;flex-direction:column;gap:10px;
+  }
+  .edu-badge{
+    width:52px;height:52px;border-radius:10px;background:var(--panel2);
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk';font-weight:700;font-size:0.95rem;color:var(--amber);
+    margin-bottom:4px;
+  }
+  .edu-card h4{font-size:1.05rem;line-height:1.3;}
+  .edu-card .inst{color:var(--teal);font-size:0.88rem;}
+  .edu-card .yr{font-family:'IBM Plex Mono';font-size:0.75rem;color:var(--muted);}
+  .edu-sub{font-family:'IBM Plex Mono';font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin:44px 0 20px;}
+  .edu-sub:first-child{margin-top:0;}
 
   /* PROJECT CARDS */
   .card{
@@ -166,48 +188,28 @@
   .card p{color:var(--muted);}
   .media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:20px;}
   .media-grid img,.media-grid video{border-radius:10px;width:100%;height:220px;object-fit:cover;border:1px solid var(--line);}
-  
-  /* VIDEO EMBED GRID - narrower width, narrower height */
+
   .embed-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:20px;justify-items:center;}
   .embed-row blockquote{width:100%;border:none;border-radius:10px;min-height:450px;}
-  
+
   .youtube-embed{
-    position:relative;
-    width:70%;
-    max-width:400px;
-    padding-bottom:141.42%;
-    height:0;
-    overflow:hidden;
-    border-radius:10px;
-    border:1px solid var(--line);
+    position:relative;width:70%;max-width:400px;padding-bottom:141.42%;
+    height:0;overflow:hidden;border-radius:10px;border:1px solid var(--line);
   }
-  .youtube-embed iframe{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    border:none;
-  }
-  
+  .youtube-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+
   @media(max-width:900px){
     .embed-row{grid-template-columns:1fr;justify-items:center;}
     .youtube-embed{width:80%;max-width:350px;}
   }
-  
-  @media(max-width:600px){
-    .youtube-embed{width:90%;max-width:100%;}
-  }
+  @media(max-width:600px){.youtube-embed{width:90%;max-width:100%;}}
 
-  /* GRID for freelance projects */
   .proj-grid{display:grid;grid-template-columns:1fr;gap:24px;}
 
-  /* SPEAKING */
   .speak-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
   @media(max-width:700px){.speak-grid{grid-template-columns:1fr;}}
   .speak-grid img{border-radius:14px;border:1px solid var(--line);height:320px;object-fit:cover;}
 
-  /* CONTACT */
   .contact-box{
     background:var(--panel);border:1px solid var(--line);border-radius:20px;
     padding:56px;text-align:center;
@@ -238,6 +240,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#signature">Signature Project</a></li>
       <li><a href="#freelance">Freelance Work</a></li>
       <li><a href="#speaking">Speaking</a></li>
@@ -246,14 +249,13 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <header class="hero">
   <section style="padding-top:0;padding-bottom:0;">
     <div class="hero-grid">
       <div>
         <span class="eyebrow">Digital Marketing & E-Communication Manager</span>
         <h1>Twelve years turning<br>attention into <span class="accent">measurable growth.</span></h1>
-        <p class="hero-role">I build and run digital strategy, paid media, and content systems for brands and independent clients across Egypt and the wider MENA region — from a national Pay-TV[...]
+        <p class="hero-role">I build and run digital strategy, paid media, and content systems for brands and independent clients across Egypt and the wider MENA region — from a national Pay-TV network to solo entrepreneurs launching from zero.</p>
         <div class="hero-cta">
           <a href="#experience" class="btn btn-primary">View my work →</a>
           <a href="#contact" class="btn btn-ghost">Get in touch</a>
@@ -289,9 +291,18 @@
     <div class="about-text">
       <span class="eyebrow">About</span>
       <h2 style="margin-bottom:20px;">A marketer who stays close to the work.</h2>
-      <p>I'm Ahmed El Hawary, based in Cairo, Egypt. Since 2016 I've led digital strategy, paid media, content, and CRM for Cable Network Egypt (CNE), one of Egypt's leading Pay-TV providers — [...]
-      <p>What ties the work together is a habit of owning things end-to-end: I don't just run the ads, I've built Meta Business accounts and pages from zero, directed and edited video content, wr[...]
+      <p>I'm Ahmed El Hawary, based in Cairo, Egypt — a marketing and e-communication professional with 12+ years of experience in digital strategy, paid media, and audience engagement. Since 2016 I've led digital strategy, content, and CRM for Cable Network Egypt (CNE), one of Egypt's leading Pay-TV providers, while running an independent client roster on the side covering tourism, personal branding, interior design, tech retail, and personal coaching.</p>
+      <p>Some of the work I'm proudest of: developing a strategic digital marketing plan that increased brand engagement by over 300%, and launching a content series that grew an Instagram page from 10K to 100K+ followers. What ties it all together is a habit of owning things end-to-end — I don't just run the ads, I've built Meta Business accounts and pages from zero, directed and edited video content, written the strategy decks myself, and stood on stage to represent partner brands at industry forums.</p>
+      <p>I'm a growth-minded, result-oriented operator who builds a roadmap before starting any project and measures against it — and I've balanced further study and certification with full-time work throughout my career, because I'd rather stay current than stay comfortable.</p>
       <p>I'm currently exploring new senior digital marketing opportunities where strategy, hands-on execution, and measurable results all matter equally.</p>
+      <div class="strength-tags">
+        <span>Growth Mindset</span>
+        <span>Result-Oriented</span>
+        <span>Strategic Planning</span>
+        <span>Campaign Leadership</span>
+        <span>Time Management</span>
+        <span>Analytical Thinking</span>
+      </div>
     </div>
     <div>
       <div class="stat-box"><div class="num">12+</div><div class="label">Years in digital marketing & e-communication</div></div>
@@ -347,6 +358,64 @@
   </div>
 </section>
 
+<!-- EDUCATION & CERTIFICATIONS -->
+<section id="education">
+  <div class="sec-head">
+    <span class="eyebrow">Background</span>
+    <h2>Education & Certifications</h2>
+  </div>
+
+  <div class="edu-sub">Education</div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-badge">UB</div>
+      <h4>Bachelor's Degree in Accounting & Management</h4>
+      <div class="inst">Banha University, Egypt</div>
+      <div class="yr">1997 — 2003</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-badge">ESLSCA</div>
+      <h4>Diploma in Human Resources — International Career Management</h4>
+      <div class="inst">Paris ESLSCA Business School, Giza</div>
+      <div class="yr">2012 — 2013</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-badge">CAM</div>
+      <h4>Diploma — Training Teachers & Trainers</h4>
+      <div class="inst">Cambridge</div>
+      <div class="yr">&nbsp;</div>
+    </div>
+  </div>
+
+  <div class="edu-sub">Certifications</div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-badge">AUC</div>
+      <h4>Marketing & Digital Marketing Certificate</h4>
+      <div class="inst">The American University in Cairo</div>
+      <div class="yr">Most recent</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-badge">Meta</div>
+      <h4>Meta Blueprint Certification — Digital Content & Marketing</h4>
+      <div class="inst">Meta</div>
+      <div class="yr">2018</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-badge">Ads</div>
+      <h4>Google Ads Certification — Ads Management</h4>
+      <div class="inst">Google</div>
+      <div class="yr">2019</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-badge">HS</div>
+      <h4>Content Marketing Certification</h4>
+      <div class="inst">HubSpot</div>
+      <div class="yr">2021</div>
+    </div>
+  </div>
+</section>
+
 <!-- SIGNATURE PROJECT -->
 <section id="signature">
   <div class="sec-head">
@@ -354,7 +423,7 @@
     <h2>CNE World Cup Raffle — "35 Years of Leadership"</h2>
   </div>
   <div class="card">
-    <p>To celebrate CNE's three decades as a Pay-TV pioneer, I conceived, directed, shot, and edited a raffle campaign rewarding the brand's most engaged followers with beIN World Cup subscriptio[...]
+    <p>To celebrate CNE's three decades as a Pay-TV pioneer, I conceived, directed, shot, and edited a raffle campaign rewarding the brand's most engaged followers with beIN World Cup subscriptions and 4K STB boxes. Entry required four actions — Follow, Like, Comment with #كأس_العالم_CNE, and Share — designed to maximize reach and organic participation simultaneously. The campaign was officially licensed under Egypt's Ministry of Social Solidarity and registered with the Consumer Protection Agency.</p>
     <div class="metric-row">
       <div class="metric"><div class="n">959,691</div><div class="l">Video views</div></div>
       <div class="metric"><div class="n">682,444</div><div class="l">Reach</div></div>
@@ -362,7 +431,7 @@
       <div class="metric"><div class="n">10,675</div><div class="l">Total clicks</div></div>
       <div class="metric"><div class="n">18</div><div class="l">Winners handed prizes on-camera</div></div>
     </div>
-    <p style="margin-top:20px;">I personally handed prizes to all 18 winners at a branded step-and-repeat activation, photographing each handover and conducting short interviews — turning a dig[...]
+    <p style="margin-top:20px;">I personally handed prizes to all 18 winners at a branded step-and-repeat activation, photographing each handover and conducting short interviews — turning a digital contest into a real-world brand moment with lasting content value.</p>
     <div class="media-grid">
       <img src="assets/raffle1.jpg" alt="CNE raffle winner handover">
       <img src="assets/raffle2.jpg" alt="CNE raffle winner handover">
@@ -392,7 +461,7 @@
         <div><h3>MISIR TURLARI</h3><div class="company" style="color:var(--teal);">Turkish Tourism — Paid Media Management</div></div>
         <span class="card-tag">Meta Ads</span>
       </div>
-      <p>Ongoing paid media management across two ad accounts, targeting Turkish tourists interested in visiting Egypt. Continuous, multi-year campaign management spanning seasonal promotions, SM[...]
+      <p>Ongoing paid media management across two ad accounts, targeting Turkish tourists interested in visiting Egypt. Continuous, multi-year campaign management spanning seasonal promotions, SMS campaigns, and destination-specific targeting.</p>
       <div class="metric-row">
         <div class="metric"><div class="n">16,631</div><div class="l">Messaging conversations (leads)</div></div>
         <div class="metric"><div class="n">6,385</div><div class="l">Instagram follows from ads</div></div>
@@ -423,14 +492,14 @@
         <span class="card-tag">Active — Since April 2026</span>
       </div>
       <p>Repurposing TV-aired footage into optimized short-form content for Meta and TikTok. Expanding into full content strategy and paid ads management. 13 videos published to date.</p>
-     <div class="media-grid">
-       <img src="assets/life_coach_1.jpg" alt="Father Alternative">
-       <img src="assets/life_coach_2.jpg" alt="Believe in Your Self">
-       <img src="assets/life_coach_3.jpg" alt="Relation Success">
-       <img src="assets/life_coach_4.jpg" alt="Your Psychological Life">
-       <img src="assets/life_coach_5.jpg" alt="Attachment FREE">
-       <img src="assets/life_coach_6.jpg" alt="Achievments = Life Change">
-     </div>
+      <div class="media-grid">
+        <img src="assets/life_coach_1.jpg" alt="Father Alternative">
+        <img src="assets/life_coach_2.jpg" alt="Believe in Your Self">
+        <img src="assets/life_coach_3.jpg" alt="Relation Success">
+        <img src="assets/life_coach_4.jpg" alt="Your Psychological Life">
+        <img src="assets/life_coach_5.jpg" alt="Attachment FREE">
+        <img src="assets/life_coach_6.jpg" alt="Achievments = Life Change">
+      </div>
       <div class="embed-row">
         <div class="youtube-embed">
           <iframe src="https://www.youtube.com/embed/83yyuO1oTAY" allowfullscreen="" loading="lazy"></iframe>
@@ -466,7 +535,7 @@
         <img src="assets/ebada_4.jpg" alt="Red Gold Episode">
         <img src="assets/ebada_5.jpg" alt="Ramadan Kareem Episode">
         <img src="assets/ebada_6.jpg" alt="Emely Belegrini Episode">
-       </div>
+      </div>
       <div class="embed-row">
         <div class="youtube-embed">
           <iframe src="https://www.youtube.com/embed/0-BQf5k9Xzo" allowfullscreen="" loading="lazy"></iframe>
@@ -479,7 +548,7 @@
         <div><h3>Solista Studios</h3><div class="company" style="color:var(--teal);">Interior Design — Full-Funnel Campaign</div></div>
         <span class="card-tag">Strategy + Ads + Reporting</span>
       </div>
-      <p>Ran content publishing and paid ads for a Class-A interior design studio, moving prospects through Awareness → Profile Visits → WhatsApp inquiries. Authored the full campaign report [...]
+      <p>Ran content publishing and paid ads for a Class-A interior design studio, moving prospects through Awareness → Profile Visits → WhatsApp inquiries. Authored the full campaign report and data analysis myself.</p>
       <div class="metric-row">
         <div class="metric"><div class="n">137,408</div><div class="l">Reach</div></div>
         <div class="metric"><div class="n">225,053</div><div class="l">Views</div></div>
@@ -487,9 +556,6 @@
         <div class="metric"><div class="n">65% M / 35% F</div><div class="l">Audience, peak 25–34</div></div>
       </div>
       <div class="embed-row">
-        <div class="youtube-embed">
-          <iframe src="https://www.youtube.com/embed/00_IZU0Ho24" allowfullscreen="" loading="lazy"></iframe>
-        </div>
         <div class="youtube-embed">
           <iframe src="https://www.youtube.com/embed/00_IZU0Ho24" allowfullscreen="" loading="lazy"></iframe>
         </div>
@@ -501,7 +567,7 @@
         <div><h3>WE Supply</h3><div class="company" style="color:var(--teal);">Computer & Tech Retailer — Built From Zero</div></div>
         <span class="card-tag">0 → 1 Brand Build</span>
       </div>
-      <p>Built the Meta Business Portfolio, Page, and Ad Account from scratch, then designed and ran the entire content system — hiring posts, product launches, and a 10-part "Daily Tips" educa[...]
+      <p>Built the Meta Business Portfolio, Page, and Ad Account from scratch, then designed and ran the entire content system — hiring posts, product launches, and a 10-part "Daily Tips" educational series — plus paid campaigns.</p>
       <div class="metric-row">
         <div class="metric"><div class="n">3,608</div><div class="l">Page likes generated</div></div>
         <div class="metric"><div class="n">255,869</div><div class="l">Impressions</div></div>
@@ -543,7 +609,7 @@
     <span class="eyebrow">Industry Presence</span>
     <h2>Speaking — beIN Partners Forum</h2>
   </div>
-  <p style="color:var(--muted);max-width:640px;margin-bottom:32px;">Representing CNE as a speaker at beIN's regional partner events — sharing digital strategy and partnership results with the w[...]
+  <p style="color:var(--muted);max-width:640px;margin-bottom:32px;">Representing CNE as a speaker at beIN's regional partner events — sharing digital strategy and partnership results with the wider beIN network.</p>
   <div class="speak-grid">
     <img src="assets/speaking1.jpg" alt="Speaking at beIN Partners Forum 2025">
     <img src="assets/speaking2.jpg" alt="Speaking at beIN event">
@@ -582,3 +648,4 @@
 </script>
 </body>
 </html>
+
